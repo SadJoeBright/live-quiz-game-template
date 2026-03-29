@@ -10,6 +10,14 @@ export interface Player {
   answeredCorrectly?: boolean;
 }
 
+export interface PlayerResult {
+  name: string;
+  answered: boolean;
+  correct: boolean;
+  pointsEarned: number;
+  totalScore: number;
+}
+
 export interface Question {
   text: string;
   options: string[];
@@ -22,6 +30,7 @@ export interface Game {
   code: string;
   hostId: string;
   questions: Question[];
+
   players: Player[];
   currentQuestion: number;
   status: 'waiting' | 'in_progress' | 'finished';
@@ -35,6 +44,12 @@ export interface User {
   password: string;
   index: string;
   ws?: WebSocket;
+}
+
+
+export interface ConnectionContext {
+  userIndex: string;
+  gameId?: string;
 }
 
 export interface WSMessage {
