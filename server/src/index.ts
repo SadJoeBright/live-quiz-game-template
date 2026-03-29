@@ -20,7 +20,15 @@ wss.on('connection', (ws: WebSocket) => {
         case 'create_game':
           gameService.createGame(ws, message);
           break;
-      
+        case 'join_game':
+          gameService.joinGame(ws, message);
+          break;
+        case 'start_game':
+          gameService.startGame(ws, message);
+          break;
+        case 'answer':
+          gameService.answer(ws, message);
+          break;
         default:
           console.warn('Unknown message type:', message.type);
       }
@@ -29,7 +37,9 @@ wss.on('connection', (ws: WebSocket) => {
     }
   });
 
-
+  ws.on('close', () => {
+    gameService.onDisconnect(ws);
+  });
 });
 
 console.log(`WebSocket server listening on port ${PORT}`);

@@ -55,10 +55,8 @@ function App() {
     switch (type) {
       case 'reg':
         if (data.error) {
-					console.log('__ERROR___')
           setError(data.errorText || 'Registration failed');
         } else {
-					console.log('__LOGIN___')
           setPlayerName(data.name);
           setScreen('role-selection');
           setError('');

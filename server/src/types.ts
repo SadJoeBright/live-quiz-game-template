@@ -10,7 +10,6 @@ export interface Player {
   answeredCorrectly?: boolean;
 }
 
-/** Результат по игроку после вопроса (сервер → `question_result`). */
 export interface PlayerResult {
   name: string;
   answered: boolean;
@@ -31,6 +30,7 @@ export interface Game {
   code: string;
   hostId: string;
   questions: Question[];
+
   players: Player[];
   currentQuestion: number;
   status: 'waiting' | 'in_progress' | 'finished';
@@ -44,6 +44,12 @@ export interface User {
   password: string;
   index: string;
   ws?: WebSocket;
+}
+
+
+export interface ConnectionContext {
+  userIndex: string;
+  gameId?: string;
 }
 
 export interface WSMessage {
