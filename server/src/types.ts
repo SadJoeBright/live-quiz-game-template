@@ -10,6 +10,15 @@ export interface Player {
   answeredCorrectly?: boolean;
 }
 
+/** Результат по игроку после вопроса (сервер → `question_result`). */
+export interface PlayerResult {
+  name: string;
+  answered: boolean;
+  correct: boolean;
+  pointsEarned: number;
+  totalScore: number;
+}
+
 export interface Question {
   text: string;
   options: string[];
